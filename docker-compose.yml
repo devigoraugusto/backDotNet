@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-repairshops
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=tesT4321
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+      - sql_network
+
+volumes:
+  sql_data:
+
+networks:
+  sql_network:
+    driver: bridge
